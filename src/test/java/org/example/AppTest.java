@@ -10,27 +10,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.WebDriver;
 
-public class AppTest {
-    WebDriver driver;
+public class AppTest extends CommonAPI {
+     @Test
+     public void test1() {
+         String title = driver.getTitle();
+         System.out.println ("Title: "+title);
+         Assert.assertEquals("Swag Labs", title );
+     }
 
-
-    public void setup(){
-        System.setProperty("webdriver.chrome.driver", "/Users/mingmasherpa/IdeaProjects/may22eattest/driver/chromedriver");
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://www.saucedemo.com");
-        String title = driver.getTitle();
-        System.out.println ("Title: "+title);
-        Assert.assertEquals("Swag Labs", title );
-    }
-
-
-    public void teardown(){
-        driver.close();
-    }
-
-     //@Test
-    // public void test1() {
 
     //}
     @Test
@@ -50,7 +37,7 @@ public class AppTest {
         boolean loginBtnDisplayed = loginBtn.isDisplayed();;
         System.out.println("Check if login button is displayed "+loginBtnDisplayed);
         Assert.assertTrue(loginBtnDisplayed);
-        teardown();
+
     }
     @Test
     public void test3(){
@@ -73,7 +60,7 @@ public class AppTest {
         System.out.println("header text "+ headerText);
         Assert.assertEquals("PRODUCTS",headerText);
 
-        teardown();
+
 
     }
 
